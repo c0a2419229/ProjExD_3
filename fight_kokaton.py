@@ -93,7 +93,7 @@ class Beam:
         ビーム画像Surfaceを生成する
         引数 bird：ビームを放つこうかとん（Birdインスタンス）
         """
-        self.img = pg.image.load("fig/4.png")  #ビーム画像のSurfaceを作成
+        self.img = pg.transform.rotozoom(pg.image.load("fig/4.png"), 0, 0.5)  #ビーム画像のSurfaceを作成
         self.rct = self.img.get_rect()
         self.rct.centery = bird.rct.centery  #縦座標の中心を一致させる
         self.rct.left= bird.rct.right  #こうかとんの右に配置
@@ -161,7 +161,7 @@ def main():
         if bomb is not None:
             if bird.rct.colliderect(bomb.rct):
                 # ゲームオーバー時に，こうかとん画像を切り替え，1秒間表示させる
-                bird.change_img(8, screen)
+                bird.change_img(8, screen)  
                 pg.display.update()
                 time.sleep(1)
                 return
@@ -173,8 +173,10 @@ def main():
         if bomb is not None:
             if beam is not None:
                 if beam.rct.colliderect(bomb.rct):
+                    # 爆弾を撃ち落としたときに爆弾とビームを消す
                     beam == None
                     bomb == None
+                    bird.change_img(6, screen)  # よろこぶこうかとんに画像変更
                     pg.display.update()
                     time.sleep(1)
                     return
