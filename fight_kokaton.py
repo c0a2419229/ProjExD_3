@@ -190,8 +190,6 @@ class Explosion:
                     self.life -= 1
         
 
-
-
 def main():
     pg.display.set_caption("たたかえ！こうかとん")
     screen = pg.display.set_mode((WIDTH, HEIGHT))    
