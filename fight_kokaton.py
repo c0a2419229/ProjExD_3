@@ -215,7 +215,7 @@ def main():
         for beam in beams:
             beam.update(screen)
             if check_bound(beam.rct) != (True, True):
-                beam = None 
+                beams.remove(beam) 
         for bomb in bombs:
             bomb.update(screen)
         pg.display.update()
