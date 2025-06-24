@@ -146,13 +146,21 @@ class Score:
     スコアに関するクラス
     """
     def __init__(self, score: int):
-        self.fonto = pg.font.SysFont("hgp創英角ポップ体", 30)
+        """
+        スコアの表示
+        引数 score：爆弾を落とした数
+        """
+        self.fonto = pg.font.SysFont("hgp創英角ﾎﾟｯﾌﾟ体", 30)
         self.score = score
         self.img = self.fonto.render("スコア：０", 0, (0, 0, 255))
         self.rct = self.img.get_rect()
         self.rct.center = 100, HEIGHT-50
     
     def update(self, screen: pg.Surface):
+        """
+        スコアの表示切替
+        引数 screen：画面Surface
+        """
         self.img = self.fonto.render(f"スコア：{self.score}", 0, (0, 0, 255))
         screen.blit(self.img, self.rct)
 
