@@ -170,6 +170,11 @@ class Explosion:
     爆発に関するクラス
     """
     def __init__(self, bomb:"Bomb", life: int):
+        """
+        爆発の画像と位置の初期化
+        引数1 bomb：Bombクラス
+        引数2 life：爆発の表示時間
+        """
         self.img = pg.image.load("fig/explosion.gif")
         self.img2 = pg.transform.flip(self.img, True, True)
         self.list = [self.img, self.img2]
@@ -180,6 +185,10 @@ class Explosion:
         self.life = life
 
     def update(self, screen: pg.Surface):
+        """
+        爆発の表示
+        引数 ：画像Surface
+        """
         if self.life > 0:
             for i in range(1, 101):
                 if i % 2 == 1:
